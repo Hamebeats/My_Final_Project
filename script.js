@@ -64,6 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let currentQuestion = 0
     let score = 0
     let playerName = ""
+    let board = document.getElementById("leaderboard")
   
     // DOM ELEMENTS
     let startBtn = document.getElementById("startBtn")
@@ -186,12 +187,22 @@ document.addEventListener("DOMContentLoaded", function () {
       showLeaderboard()
     }
   
+
+
+    let resetButton = document.getElementById("btn-reset");
+      resetButton.addEventListener("click", function() {
+        localStorage.clear();
+        board.innerHTML = "<tr><td colspan='3'>Leaderboard Reset!</td></tr>";
+      })
+
+
+
     // SHOW LEADERBOARD
     function showLeaderboard() {
-  
+
       let leaderboard = JSON.parse(localStorage.getItem("quizScores")) || []
   
-      let board = document.getElementById("leaderboard")
+      
   
       board.innerHTML = ""
   
@@ -208,6 +219,7 @@ document.addEventListener("DOMContentLoaded", function () {
   
         board.appendChild(row)
       }
+      
     }
   
   })
