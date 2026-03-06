@@ -195,6 +195,13 @@ document.addEventListener("DOMContentLoaded", function () {
         board.innerHTML = "<tr><td colspan='3'>Leaderboard Reset!</td></tr>";
       })
 
+      // let nextPerson = document.getElementById("next-person");
+      // nextPerson.addEventListener("click", function() {
+      //   resultBox.style.display = "none"
+      //   startPage.style.display = "block"
+      //   playerName.textContent = "";
+      // })
+
 
 
     // SHOW LEADERBOARD
@@ -219,6 +226,16 @@ document.addEventListener("DOMContentLoaded", function () {
   
         board.appendChild(row)
       }
+      let nextPerson = document.getElementById("next-person");
+
+nextPerson.addEventListener("click", function() {
+  
+    score = 0;
+    currentQuestion = 0;
+    document.getElementById("result").style.display = "none";
+    document.getElementById("startPage").style.display = "block";
+    document.getElementById("playerName").value = "";
+});
       
     }
   
