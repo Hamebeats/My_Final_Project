@@ -191,7 +191,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let resetButton = document.getElementById("btn-reset");
       resetButton.addEventListener("click", function() {
-        localStorage.clear();
+        localStorage.removeItem("quizScores");
         board.innerHTML = "<tr><td colspan='3'>Leaderboard Reset!</td></tr>";
       })
 
