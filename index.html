@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Smart Quiz</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Smart Quiz</h1>
+
+        <!-- START SCREEN -->
+        <div id="startPage">
+            <input type="text" id="playerName" placeholder="Enter your name">
+            <button id="startBtn">Start Quiz</button>
+        </div>
+
+        <!-- QUIZ SCREEN -->
+        <div id="quizPage" class="hidden">
+
+            <h2 id="question"></h2>
+
+            <div id="answers"></div>
+
+            <button id="nextBtn">Next</button>
+
+        </div>
+
+        <!-- RESULT SCREEN -->
+        <div id="result" class="hidden">
+
+            <h2>Quiz Finished!</h2>
+
+            <p id="scoreText"></p>
+
+            <h2>Leaderboard</h2>
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Position</th>
+                        <th>Name</th>
+                        <th>Score</th>
+                    </tr>
+                </thead>
+
+                <tbody id="leaderboard"></tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
