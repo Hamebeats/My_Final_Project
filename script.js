@@ -152,7 +152,7 @@ document.addEventListener("DOMContentLoaded", function () {
           showResult()
         }
   
-      }, 1500)
+      }, 1000)
     }
   
     // SHOW RESULT
