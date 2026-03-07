@@ -93,9 +93,11 @@ document.addEventListener("DOMContentLoaded", function () {
     let questionText = document.getElementById("question")
     let answerButtons = document.getElementById("answers")
     let resultBox = document.getElementById("result")
+    let next = document.getElementById("nextBtn");
+    let nextPerson = document.getElementById("next-person");
   
     // START BUTTON
-    startBtn.addEventListener("click", startQuiz)
+    
   
     // START QUIZ
     function startQuiz() {
@@ -181,17 +183,8 @@ document.addEventListener("DOMContentLoaded", function () {
   
        
 
-      let next = document.getElementById("nextBtn");
-      next.addEventListener("click", function() {
-
-        currentQuestion++
-
-        if (currentQuestion < questions.length) {
-               showQuestion()
-             } else {
-               showResult()
-             }
-      })
+      
+      
     }
   
     // SHOW RESULT
@@ -228,10 +221,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     let resetButton = document.getElementById("btn-reset");
-      resetButton.addEventListener("click", function() {
-        localStorage.removeItem("quizScores");
-        board.innerHTML = "<tr><td colspan='3'>Leaderboard Reset!</td></tr>";
-      })
+      
 
       // let nextPerson = document.getElementById("next-person");
       // nextPerson.addEventListener("click", function() {
@@ -264,17 +254,33 @@ document.addEventListener("DOMContentLoaded", function () {
   
         board.appendChild(row)
       }
-      let nextPerson = document.getElementById("next-person");
-
-nextPerson.addEventListener("click", function() {
-  
-    score = 0;
-    currentQuestion = 0;
-    document.getElementById("result").style.display = "none";
-    document.getElementById("startPage").style.display = "block";
-    document.getElementById("playerName").value = "";
-});
       
+
+
     }
+    startBtn.addEventListener("click", startQuiz)
+    next.addEventListener("click", function() {
+
+      currentQuestion++
+
+      if (currentQuestion < questions.length) {
+             showQuestion()
+           } else {
+             showResult()
+           }
+    })
+    resetButton.addEventListener("click", function() {
+      localStorage.removeItem("quizScores");
+      board.innerHTML = "<tr><td colspan='3'>Leaderboard Reset!</td></tr>";
+    })
+    nextPerson.addEventListener("click", function() {
+  
+      score = 0;
+      currentQuestion = 0;
+      document.getElementById("result").style.display = "none";
+      document.getElementById("startPage").style.display = "block";
+      document.getElementById("playerName").value = "";
+  });
+        
   
   })
