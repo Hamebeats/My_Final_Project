@@ -277,6 +277,7 @@ document.addEventListener("DOMContentLoaded", function () {
   
       score = 0;
       currentQuestion = 0;
+      playerName = "";
       document.getElementById("result").style.display = "none";
       document.getElementById("startPage").style.display = "block";
       document.getElementById("playerName").value = "";
