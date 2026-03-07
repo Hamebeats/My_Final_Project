@@ -95,6 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let resultBox = document.getElementById("result")
     let next = document.getElementById("nextBtn");
     let nextPerson = document.getElementById("next-person");
+    let boardBtn = document.getElementById("goToBoard");
   
     // START BUTTON
     
@@ -259,6 +260,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
     startBtn.addEventListener("click", startQuiz)
+    boardBtn.addEventListener("click", function() {
+      document.getElementById("startPage").style.display = "none";
+      document.getElementById("result").style.display = "block";
+    })
     next.addEventListener("click", function() {
 
       currentQuestion++
