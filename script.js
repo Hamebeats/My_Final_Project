@@ -4,61 +4,81 @@ document.addEventListener("DOMContentLoaded", function () {
     // QUESTIONS
     let questions = [
       {
-        question: "What is the capital of France?",
-        answers: ["Berlin", "Paris", "Madrid", "Rome"],
-        correct: "Paris"
+        question: "Which fruit is actually a berry?",
+        answers: ["Strawberry", "Banana", "Apple", "Grape"],
+        correct: "Banana"
       },
       {
-        question: "Which planet is called the Red Planet?",
-        answers: ["Earth", "Mars", "Jupiter", "Venus"],
+        question: "Which animal is known as the 'King of the Jungle'?",
+        answers: ["Elephant", "Tiger", "Lion", "Giraffe"],
+        correct: "Lion"
+      },
+      {
+        question: "What is the largest ocean on Earth?",
+        answers: ["Atlantic", "Indian", "Arctic", "Pacific"],
+        correct: "Pacific"
+      },
+      {
+        question: "Which country is home to the Kangaroo?",
+        answers: ["South Africa", "Australia", "Brazil", "India"],
+        correct: "Australia"
+      },
+      {
+        question: "What is the tallest mountain in the world?",
+        answers: ["K2", "Mt. Everest", "Kilimanjaro", "Mt. Kenya"],
+        correct: "Mt. Everest"
+      },
+      {
+        question: "How many colors are there in a rainbow?",
+        answers: ["5", "6", "7", "8"],
+        correct: "7"
+      },
+      {
+        question: "Which planet is known as the 'Red Planet'?",
+        answers: ["Venus", "Mars", "Jupiter", "Saturn"],
         correct: "Mars"
       },
       {
-        question: "Who invented JavaScript?",
-        answers: ["Brendan Eich", "Bill Gates", "Mark Zuckerberg", "Elon Musk"],
-        correct: "Brendan Eich"
+        question: "What is the fastest land animal?",
+        answers: ["Lion", "Horse", "Cheetah", "Gazelle"],
+        correct: "Cheetah"
       },
       {
-        question: "Which language runs in the browser?",
-        answers: ["Python", "Java", "C++", "JavaScript"],
-        correct: "JavaScript"
+        question: "Which gas do plants absorb from the atmosphere?",
+        answers: ["Oxygen", "Nitrogen", "Carbon Dioxide", "Hydrogen"],
+        correct: "Carbon Dioxide"
       },
       {
-        question: "What does HTML stand for?",
-        answers: [
-          "Hyper Text Markup Language",
-          "High Tech Modern Language",
-          "Hyper Tool Mark Language",
-          "Home Tool Mark Language"
-        ],
-        correct: "Hyper Text Markup Language"
+        question: "How many days are in a leap year?",
+        answers: ["365", "364", "366", "367"],
+        correct: "366"
       },
       {
-        question: "Which company created Java?",
-        answers: ["Microsoft", "Sun Microsystems", "Google", "Apple"],
-        correct: "Sun Microsystems"
+        question: "Which is the largest planet in our solar system?",
+        answers: ["Earth", "Saturn", "Jupiter", "Neptune"],
+        correct: "Jupiter"
       },
       {
-        question: "What does CSS do?",
-        answers: ["Adds style", "Runs servers", "Stores data", "Builds hardware"],
-        correct: "Adds style"
+        question: "What is the capital city of France?",
+        answers: ["Berlin", "Madrid", "Rome", "Paris"],
+        correct: "Paris"
       },
       {
-        question: "Which symbol is used for comments in JS?",
-        answers: ["//", "**", "!!", "##"],
-        correct: "//"
+        question: "Which organ in the human body is responsible for pumping blood?",
+        answers: ["Lungs", "Brain", "Liver", "Heart"],
+        correct: "Heart"
       },
       {
-        question: "Which tag creates a link?",
-        answers: ["a", "p", "h1", "div"],
-        correct: "a"
+        question: "What is the longest river in the world?",
+        answers: ["Amazon", "Nile", "Mississippi", "Yangtze"],
+        correct: "Nile"
       },
       {
-        question: "Which keyword creates a variable?",
-        answers: ["let", "make", "build", "create"],
-        correct: "let"
+        question: "In which year did the first iPhone come out?",
+        answers: ["2005", "2007", "2010", "2012"],
+        correct: "2007"
       }
-    ]
+    ];
   
     // VARIABLES
     let currentQuestion = 0
@@ -86,6 +106,19 @@ document.addEventListener("DOMContentLoaded", function () {
         alert("Please enter your name")
         return
       }
+
+      // 2. Check if name already exists in Local Storage
+    let leaderboard = JSON.parse(localStorage.getItem("quizScores")) || [];
+    
+    // This looks through the list to see if the name matches
+    let alreadyPlayed = leaderboard.some(function(entry) {
+        return entry.name.trim().toLowerCase() === playerName.trim().toLowerCase();
+    });
+
+    if (alreadyPlayed) {
+        alert("Sorry, " + playerName + " has already played!");
+        return; // This stops the quiz from starting
+    }
   
       startPage.style.display = "none"
       quizPage.style.display = "block"
