@@ -130,6 +130,8 @@ document.addEventListener("DOMContentLoaded", function () {
     function showQuestion() {
   
       answerButtons.innerHTML = ""
+      let activate = document.getElementById("nextBtn");
+      activate.style.display = "none";
   
       let q = questions[currentQuestion]
   
@@ -155,6 +157,7 @@ document.addEventListener("DOMContentLoaded", function () {
       let correctAnswer = questions[currentQuestion].correct
   
       let allButtons = document.querySelectorAll(".answer-btn")
+      document.getElementById("nextBtn").style.display = "block"
   
       allButtons.forEach(function (btn) {
         btn.disabled = true
@@ -176,17 +179,19 @@ document.addEventListener("DOMContentLoaded", function () {
         })
       }
   
-      setTimeout(function () {
-  
+       
+
+      let next = document.getElementById("nextBtn");
+      next.addEventListener("click", function() {
+
         currentQuestion++
-  
+
         if (currentQuestion < questions.length) {
-          showQuestion()
-        } else {
-          showResult()
-        }
-  
-      }, 1000)
+               showQuestion()
+             } else {
+               showResult()
+             }
+      })
     }
   
     // SHOW RESULT
