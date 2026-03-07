@@ -96,6 +96,8 @@ document.addEventListener("DOMContentLoaded", function () {
     let next = document.getElementById("nextBtn");
     let nextPerson = document.getElementById("next-person");
     let boardBtn = document.getElementById("goToBoard");
+    let congs = document.getElementById("congs")
+    let regret = document.getElementById("regret")
   
     // START BUTTON
     
@@ -169,11 +171,13 @@ document.addEventListener("DOMContentLoaded", function () {
       if (answer === correctAnswer) {
   
         button.style.backgroundColor = "green"
+        congs.textContent = "Phew, Nice!"
         score++
   
       } else {
   
         button.style.backgroundColor = "red"
+        regret.textContent = "Oops Sorry"
   
         allButtons.forEach(function (btn) {
           if (btn.textContent === correctAnswer) {
@@ -267,6 +271,8 @@ document.addEventListener("DOMContentLoaded", function () {
     next.addEventListener("click", function() {
 
       currentQuestion++
+      congs.textContent = ""
+      regret.textContent = ""
 
       if (currentQuestion < questions.length) {
              showQuestion()
