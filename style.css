@@ -46,6 +46,7 @@ button:hover {
 
 #answers button:hover {
     background: #ddd;
+    width: 110%;
 }
 
 .hidden {

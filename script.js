@@ -2,7 +2,7 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     // QUESTIONS
-    let questions = [
+    const questions = [
       {
         question: "Which fruit is actually a berry?",
         answers: ["Strawberry", "Banana", "Apple", "Grape"],
@@ -81,23 +81,23 @@ document.addEventListener("DOMContentLoaded", function () {
     ];
   
     // VARIABLES
-    let currentQuestion = 0
-    let score = 0
-    let playerName = ""
-    let board = document.getElementById("leaderboard")
+    let currentQuestion = 0;
+    let score = 0;
+    let playerName = "";
+    const board = document.getElementById("leaderboard");
   
     // DOM ELEMENTS
-    let startBtn = document.getElementById("startBtn")
-    let startPage = document.getElementById("startPage")
-    let quizPage = document.getElementById("quizPage")
-    let questionText = document.getElementById("question")
-    let answerButtons = document.getElementById("answers")
-    let resultBox = document.getElementById("result")
-    let next = document.getElementById("nextBtn");
-    let nextPerson = document.getElementById("next-person");
-    let boardBtn = document.getElementById("goToBoard");
-    let congs = document.getElementById("congs")
-    let regret = document.getElementById("regret")
+    const startBtn = document.getElementById("startBtn");
+    const startPage = document.getElementById("startPage");
+    const quizPage = document.getElementById("quizPage");
+    const questionText = document.getElementById("question");
+    const answerButtons = document.getElementById("answers");
+    const resultBox = document.getElementById("result");
+    const next = document.getElementById("nextBtn");
+    const nextPerson = document.getElementById("next-person");
+    const boardBtn = document.getElementById("goToBoard");
+    const congs = document.getElementById("congs");
+    const regret = document.getElementById("regret");
   
     // START BUTTON
     
@@ -105,18 +105,18 @@ document.addEventListener("DOMContentLoaded", function () {
     // START QUIZ
     function startQuiz() {
   
-      playerName = document.getElementById("playerName").value
+      playerName = document.getElementById("playerName").value;
   
       if (playerName === "") {
-        alert("Please enter your name")
-        return
+        alert("Please enter your name");
+        return;
       }
 
       // 2. Check if name already exists in Local Storage
-    let leaderboard = JSON.parse(localStorage.getItem("quizScores")) || [];
+    const leaderboard = JSON.parse(localStorage.getItem("quizScores")) || [];
     
     // This looks through the list to see if the name matches
-    let alreadyPlayed = leaderboard.some(function(entry) {
+    const alreadyPlayed = leaderboard.some(function(entry) {
         return entry.name.trim().toLowerCase() === playerName.trim().toLowerCase();
     });
 
@@ -125,65 +125,65 @@ document.addEventListener("DOMContentLoaded", function () {
         return; // This stops the quiz from starting
     }
   
-      startPage.style.display = "none"
-      quizPage.style.display = "block"
+      startPage.style.display = "none";
+      quizPage.style.display = "block";
   
-      showQuestion()
+      showQuestion();
     }
   
     // SHOW QUESTION
     function showQuestion() {
   
-      answerButtons.innerHTML = ""
-      let activate = document.getElementById("nextBtn");
+      answerButtons.innerHTML = "";
+      const activate = document.getElementById("nextBtn");
       activate.style.display = "none";
   
-      let q = questions[currentQuestion]
+      const q = questions[currentQuestion];
   
       questionText.textContent = q.question;
   
       for (let i = 0; i < q.answers.length; i++) {
   
-        let button = document.createElement("button")
-        button.textContent = q.answers[i]
-        button.classList.add("answer-btn")
+        const button = document.createElement("button");
+        button.textContent = q.answers[i];
+        button.classList.add("answer-btn");
   
         button.onclick = function () {
-          checkAnswer(button, q.answers[i])
-        }
+          checkAnswer(button, q.answers[i]);
+        };
   
-        answerButtons.appendChild(button)
+        answerButtons.appendChild(button);
       }
     }
   
     // CHECK ANSWER
     function checkAnswer(button, answer) {
   
-      let correctAnswer = questions[currentQuestion].correct
+      const correctAnswer = questions[currentQuestion].correct;
   
-      let allButtons = document.querySelectorAll(".answer-btn")
-      document.getElementById("nextBtn").style.display = "block"
+      const allButtons = document.querySelectorAll(".answer-btn");
+      document.getElementById("nextBtn").style.display = "block";
   
       allButtons.forEach(function (btn) {
-        btn.disabled = true
-      })
+        btn.disabled = true;
+      });
   
       if (answer === correctAnswer) {
   
-        button.style.backgroundColor = "green"
-        congs.textContent = "Phew, Nice!"
-        score++
+        button.style.backgroundColor = "green";
+        congs.textContent = "Phew, Nice!";
+        score++;
   
       } else {
   
-        button.style.backgroundColor = "red"
-        regret.textContent = "Oops Sorry"
+        button.style.backgroundColor = "red";
+        regret.textContent = "Oops Sorry";
   
         allButtons.forEach(function (btn) {
           if (btn.textContent === correctAnswer) {
-            btn.style.backgroundColor = "green"
+            btn.style.backgroundColor = "green";
           }
-        })
+        });
       }
   
        
@@ -195,37 +195,37 @@ document.addEventListener("DOMContentLoaded", function () {
     // SHOW RESULT
     function showResult() {
   
-      quizPage.style.display = "none"
-      resultBox.style.display = "block"
+      quizPage.style.display = "none";
+      resultBox.style.display = "block";
   
       document.getElementById("scoreText").textContent =
-        playerName + ", your score is " + score + " / " + questions.length
+        playerName + ", your score is " + score + " / " + questions.length;
   
-      saveScore()
+      saveScore();
     }
   
     // SAVE SCORE
     function saveScore() {
   
-      let leaderboard = JSON.parse(localStorage.getItem("quizScores")) || []
+      const leaderboard = JSON.parse(localStorage.getItem("quizScores")) || [];
   
       leaderboard.push({
         name: playerName,
         score: score
-      })
+      });
   
       leaderboard.sort(function (a, b) {
-        return b.score - a.score
-      })
+        return b.score - a.score;
+      });
   
-      localStorage.setItem("quizScores", JSON.stringify(leaderboard))
+      localStorage.setItem("quizScores", JSON.stringify(leaderboard));
   
-      showLeaderboard()
+      showLeaderboard();
     }
   
 
 
-    let resetButton = document.getElementById("btn-reset");
+    const resetButton = document.getElementById("btn-reset");
       
 
       // let nextPerson = document.getElementById("next-person");
@@ -240,50 +240,50 @@ document.addEventListener("DOMContentLoaded", function () {
     // SHOW LEADERBOARD
     function showLeaderboard() {
 
-      let leaderboard = JSON.parse(localStorage.getItem("quizScores")) || []
+      const leaderboard = JSON.parse(localStorage.getItem("quizScores")) || [];
   
       
   
-      board.innerHTML = ""
+      board.innerHTML = "";
   
       for (let i = 0; i < leaderboard.length; i++) {
   
-        let player = leaderboard[i]
+        const player = leaderboard[i];
   
-        let row = document.createElement("tr")
+        const row = document.createElement("tr");
   
         row.innerHTML =
           "<td>" + (i + 1) + "</td>" +
           "<td>" + player.name + "</td>" +
-          "<td>" + player.score + "</td>"
+          "<td>" + player.score + "</td>";
   
-        board.appendChild(row)
+        board.appendChild(row);
       }
       
 
 
     }
-    startBtn.addEventListener("click", startQuiz)
+    startBtn.addEventListener("click", startQuiz);
     boardBtn.addEventListener("click", function() {
       document.getElementById("startPage").style.display = "none";
       document.getElementById("result").style.display = "block";
-    })
+    });
     next.addEventListener("click", function() {
 
-      currentQuestion++
-      congs.textContent = ""
-      regret.textContent = ""
+      currentQuestion++;
+      congs.textContent = "";
+      regret.textContent = "";
 
       if (currentQuestion < questions.length) {
-             showQuestion()
+             showQuestion();
            } else {
-             showResult()
+             showResult();
            }
-    })
+    });
     resetButton.addEventListener("click", function() {
       localStorage.removeItem("quizScores");
       board.innerHTML = "<tr><td colspan='3'>Leaderboard Reset!</td></tr>";
-    })
+    });
     nextPerson.addEventListener("click", function() {
   
       score = 0;
@@ -295,4 +295,4 @@ document.addEventListener("DOMContentLoaded", function () {
   });
         
   
-  })
+  });
